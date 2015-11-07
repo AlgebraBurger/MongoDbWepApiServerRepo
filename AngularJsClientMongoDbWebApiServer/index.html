@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" >
+<head>
+    <title>AngularJs Client / MongoDb WebApi</title>
+	<meta charset="utf-8" />
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/jquery-2.1.4.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="App/app.js"></script>
+    <script src="App/controllers/CustomersCtrl.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="panel" ng-controller="CustomersCtrl">
+            <div class="panel-heading">
+                
+                <h3>Bootstrap / Jquery / AngularJs / Asp.net/C# / MongoDb</h3>
+            </div>
+            <div class="panel-body">
+                
+
+                <div class="panel">
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#CustomerModal">
+                        Create New Customer
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="CustomerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Create Customer</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form novalidate>
+                                        <div class="form-group">
+                                            <label>Firtname</label>
+                                            <input name="FirstName" required type="text" class="form-control" ng-model="data.customer.FirstName" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>LastName</label>
+                                            <input name="LastName" required type="text" class="form-control" ng-model="data.customer.LastName" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Yearly Income</label>
+                                            <input name="YearlyIncome" required type="text" class="form-control" ng-model="data.customer.YearlyIncome" />
+                                        </div>                                        
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" ng-click="CreateCustomer(data.customer)">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- start edit modal -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="EditCustomerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Edit Customer</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form novalidate>
+                                        <input name="_id" type="hidden" ng-model="data.customer._id" />
+                                        <div class="form-group">
+                                            <label>Firtname</label>
+                                            <input name="FirstName" required type="text" class="form-control" ng-model="data.customer.FirstName" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>LastName</label>
+                                            <input name="LastName" required type="text" class="form-control" ng-model="data.customer.LastName" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Yearly Income</label>
+                                            <input name="YearlyIncome" required type="text" class="form-control" ng-model="data.customer.YearlyIncome" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" ng-click="UpdateCustomer(data.customer)">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end edit model -->
+                </div>
+                
+
+                <table class="table table-bordered" >
+                    <tr ng-repeat="customer in customers">
+                        <td>{{customer.FirstName}}</td>
+                        <td>{{customer.LastName}}</td>
+                        <td>{{customer.YearlyIncome}}</td>
+                        <td>
+                            <a href="#" data-toggle="modal" ng-click="editCustomer(customer)">Edit</a> |
+                            <a href="#" ng-click="deleteCustomer(customer)">Delete</a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
