@@ -1,2 +1,10 @@
 # MongoDbWepApiServerRepo
-WebApi2 with MongoDb Sample
+
+AngularJs
+Bootstrap
+Jquery
+Asp.net/C#
+MongoDb C# Driver
+MongoDb
+
+
